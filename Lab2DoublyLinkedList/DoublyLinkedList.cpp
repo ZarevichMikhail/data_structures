@@ -18,22 +18,22 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 
-const Node* DoublyLinkedList::GetHead() {
+Node* DoublyLinkedList::GetHead() const {
 	return head_;
 }
 
 
-const Node* DoublyLinkedList::GetTail() {
+Node* DoublyLinkedList::GetTail() const {
 	return tail_;
 }
 
 
-const int DoublyLinkedList::GetSize() {
+int DoublyLinkedList::GetSize() const {
 	return size_;
 }
 
 
-const void DoublyLinkedList::PrintList() {
+void DoublyLinkedList::PrintList() const {
 	Node* current_node = head_;
 	
 	cout << "Ёлементы списка: " << endl;

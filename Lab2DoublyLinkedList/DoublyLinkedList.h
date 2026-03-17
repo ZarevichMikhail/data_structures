@@ -61,13 +61,13 @@ public:
 	DoublyLinkedList();
 	~DoublyLinkedList();
 
-	const Node* GetHead();
-	const Node* GetTail();
-	const int GetSize();
+	Node* GetHead() const;
+	Node* GetTail() const;
+	int GetSize() const;
 
 
 	//! \brief Выводит элементы списка.
-	const void PrintList();
+	void PrintList() const;
 	 
 
 	//! \brief Добавляет элемент в массив.
@@ -95,7 +95,7 @@ public:
 	//! \brief Получает элемент на заданном индексе.
 	//! \param index Индекс элемента, значение которого нужно получить.
 	//! \return Указатель на узел с данным индексом. 
-	 Node* GetElementByIndex(int index);
+    Node* GetElementByIndex(int index);
      
 
 	//! \brief Сортирует массив методом гномьей сортировки.

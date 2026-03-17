@@ -2,7 +2,7 @@
 
 
 // !\brief Моя реализация кольцевого буффера на основе массива.
-// Кольцевой буфер работает по принципу LIFO.
+//         Кольцевой буфер работает по принципу FIFO.
 class CircularBuffer {
 private:
 
@@ -15,32 +15,24 @@ private:
 	//! \brief Вместимость очереди.
 	int capacity_;
 
-	//! \brief Индекс первого добавленного элемента . 
-	int first_index_;
-
+    //! \brief Индекс следующего элемента для добавления.
 	int index_to_add_;
+
+    //! \brief Индекс следующего элемента для удаления.
 	int index_to_remove_;
-
-	
-	//! \brief Индекс последнего добавленного элемента
-	int last_index_;
-
 
 	//! \brief Размер буфера по умолчанию. 
 	int initial_capacity_ = 4;
 
-
+    //! \brief Проверяет, что буфер не заполнен.
 	void CheckSizeToAdd();
+
+    //! \brief Проверяет, что буфер не пустой.
 	void CheckSizeToRemove();
 
-
 	//! \brief Увеличивает индекс на 1, 
-	//! или перебрасывает в начало, если дошёл до конца. 
-	void ChangeIndex(int* index);
-
-	void ChangeAddIndex();
-	void ChangeRemoveIndex();
-
+	//!        или перебрасывает в начало, если дошёл до конца. 
+	void ChangeIndex(int& index);
 
 public:
 
@@ -52,9 +44,14 @@ public:
 	CircularBuffer(int capacity_);
 
 
+    //! \brief Деструктор для освобождения памяти.
 	~CircularBuffer();
 
+
+    //! \brief Выводит элементы буфера. 
+    void PrintBuffer() const;
 	
+
 	//! \brief Добавляет элемент в буфер. 
 	void AddElement(int value);
 
@@ -64,12 +61,6 @@ public:
 
 
 	//! \brief Изменяет размер буфера. 
-	void ResizeCircularBuffer();
-
-
-
-
-
-
+	void ResizeCircularBuffer(int new_capacity);
 };
 
