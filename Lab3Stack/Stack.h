@@ -14,26 +14,24 @@ private:
 	//! \brief Индекс последнего элемента. 
 	int top_;
 
-
-    //!\brief Проверяет, пустой ли стек.
-	bool IsEmpty() const;
-
 public:
 
-	Stack();
+    //! \brief Создаёт стек заданного размера.
+    //! \param size Размер стека.
+    Stack(int size);
 	~Stack();
 
 
     //! \brief Возвращает количество элементов стека. 
     int GetSize() const;
 	
-	//! \brief Создаёт стек заданного размера.
-	//! \param Размер стека.
-	Stack(int size);
-	
 
 	//! \brief Выводит на экран все элементы стека.
 	void PrintBuffer() const;
+
+
+    //!\brief Проверяет, пустой ли стек.
+    bool IsEmpty() const;
 
 
 	//! \brief Добавляет элемент в конец стека.

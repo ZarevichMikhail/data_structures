@@ -17,6 +17,9 @@ CircularBuffer::CircularBuffer() {
 
 
 CircularBuffer::CircularBuffer(int capacity) {
+    if (capacity <= 0) {
+        throw out_of_range("Размерность должна быть больше нуля.");
+    }
 	capacity_ = capacity;
 	buffer_ = new int[capacity];
 
@@ -28,12 +31,23 @@ CircularBuffer::CircularBuffer(int capacity) {
 
 
 CircularBuffer::~CircularBuffer() {
-    delete[] buffer_;
+    DeleteCircularBuffer();
 }
 
 
-void CircularBuffer::PrintBuffer() const{
+int CircularBuffer::GetFreeSpace() const {
 
+    return capacity_ - size_;
+}
+
+
+int CircularBuffer::GetOccupiedSpace() const {
+
+    return size_;
+}
+
+
+void CircularBuffer::PrintBuffer() const {
 
     if (size_ == 0) {
         cout << "Буфер пустой." << endl;
@@ -184,3 +198,6 @@ void CircularBuffer::ResizeCircularBuffer(int new_capacity) {
 }
 
 
+void CircularBuffer::DeleteCircularBuffer() {
+    delete[] buffer_;
+}
